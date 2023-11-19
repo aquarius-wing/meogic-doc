@@ -29,13 +29,15 @@ const config = {
   // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'zh'],
+    locales: ['en', 'zh-CN'],
     localeConfigs: {
       en: {
         htmlLang: 'en-US',
+        label: 'English',
       },
-      zh: {
+      'zh-CN': {
         htmlLang: 'zh-CN',
+        label: '简体中文',
       },
     },
   },
@@ -51,7 +53,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/meogic-tect/meogic-doc',
         },
         // blog: {
         //   showReadingTime: true,
