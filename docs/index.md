@@ -12,7 +12,7 @@ Next, please follow my steps to understand our software, 🐱!
 
 ### You can choose to quickly get started with our software
 
-[Quick Start No Pressure Input Whiteboard](./getting-started/1.quick-start)
+[Quick Start No Pressure Input Whiteboard](./getting-started/quick-start)
 
 ### Or you can choose to first understand some core concepts of our software
 

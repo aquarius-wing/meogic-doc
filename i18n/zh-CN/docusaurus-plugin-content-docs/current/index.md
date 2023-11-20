@@ -12,7 +12,7 @@ Meogic是一个学习与思考的一站式平台，无缝隙打通你从卡片�
 
 ### 您可以选择先快速上手我们的软件
 
-[快速上手无压输入白板](./getting-started/1.quick-start)
+[快速上手无压输入白板](./getting-started/quick-start)
 
 ### 也可以选择先了解我们软件的一些核心概念
 
