@@ -27,6 +27,7 @@
     "react": "^17.0.0",
     "react-copy-to-clipboard": "^5.0.4",
     "react-dom": "^17.0.0",
+    "react-player": "^2.13.0",
     "react-qr-svg": "^2.3.0",
     "redocusaurus": "^1.0.1",
     "sass": "^1.69.5"
