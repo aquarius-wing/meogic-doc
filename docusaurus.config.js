@@ -78,7 +78,7 @@ const config = {
         title: 'Meogic Wiki',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          src: 'img/logo-img-512.png',
         },
         items: [
           {
