@@ -17,7 +17,12 @@ module.exports = function (context, options) {
                 const content = fs.readFileSync(file, 'utf-8');
                 const filename = path.basename(file);
 
-                const [version, language] = filename.split('_'); // 假设文件名格式为 "版本号_语言.md"
+                // filename 版本号_语言.md
+                // 读取版本号、语言、扩展名
+                const [version] = filename.split('_');
+                const [_, extension] = filename.split('.');
+                const language = filename.split('_')[1].split('.')[0];
+
 
                 // 解析内容
                 const sections = content.split('## ').slice(1); // 以 "## "分割，去掉第一个空元素
@@ -29,7 +34,12 @@ module.exports = function (context, options) {
                     }));
                 }).flat(); // 将数组扁平化
 
-                changelogs.push({ version, language, changes });
+                // 使用fs.statSync获取文件状态信息
+                const stats = fs.statSync(file);
+                // 获取文件的创建时间，转换为毫秒单位的时间戳
+                const createTime = stats.birthtimeMs || stats.ctimeMs;
+
+                changelogs.push({ version, language, changes, createTime });
             });
 
             // 返回changelogs数组，以便在其他插件方法中使用

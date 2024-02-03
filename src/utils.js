@@ -1,19 +1,17 @@
-// utils/processTextForSpacing.js
 export const processTextForSpacing = (htmlString) => {
-    // 使用DOM解析器解析HTML字符串
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlString, 'text/html');
 
-    // 遍历所有文本节点，将文本包装在<span>中，并添加lang属性
     doc.body.querySelectorAll('*').forEach(node => {
         node.childNodes.forEach(child => {
-            if (child.nodeType === 3 && child.nodeValue.trim()) { // nodeType 3 是文本节点
-                const segments = child.nodeValue.split(/([\u4e00-\u9fa5]+)/).filter(Boolean);
+            if (child.nodeType === 3 && child.nodeValue.trim()) {
+                // 使用正则表达式分割文本，连续的中文和全角标点作为一个整体，英文和数字作为另一个整体
+                const segments = child.nodeValue.split(/([A-Za-z0-9]+|[\u4e00-\u9fa5，。、！？；：‘’“”（）【】《》]+)/).filter(Boolean);
                 const fragment = document.createDocumentFragment();
                 segments.forEach(segment => {
                     const span = document.createElement('span');
                     span.className = 'text-segment';
-                    span.setAttribute('lang', /[\u4e00-\u9fa5]/.test(segment) ? 'zh' : 'en');
+                    span.setAttribute('lang', /[A-Za-z0-9]+/.test(segment) ? 'en' : 'zh');
                     span.textContent = segment;
                     fragment.appendChild(span);
                 });
