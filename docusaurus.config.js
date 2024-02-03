@@ -3,6 +3,7 @@
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const path = require('path');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -83,6 +84,11 @@ const config = {
         },
         items: [
           {
+            href: './changelog',
+            label: 'Change Log',
+            position: 'left',
+          },
+          {
             type: 'localeDropdown',
             position: 'right',
           },
@@ -145,6 +151,7 @@ const config = {
     }),
   plugins: [
     'docusaurus-plugin-sass',
+    path.resolve(__dirname, 'plugins/my-changelog-plugin'),
   ]
 };
 

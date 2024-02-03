@@ -16,6 +16,7 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  font-family: Sohne Web,-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
 [data-theme='light'] body{
@@ -46,5 +47,126 @@
   }
   video{
     max-width: 100%;
+  }
+}
+.changelog-container{
+  h1{
+    font-size: 48px;
+    margin-bottom: 56px;
+  }
+}
+.note_section{
+  .subtitle_subtitle{
+    display: grid;
+    grid-gap: 2rem;
+    gap: 2rem;
+    grid-template-columns: 1fr auto;
+    align-items: flex-end;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e6e6eb;
+    h2{
+      margin: 0;
+    }
+    .button{
+      display: inline-block;
+      background: var(--theme-accent-bg);
+      color: var(--theme-accent-fg)!important;
+      padding: .5rem .75rem .625rem;
+      border-radius: 0.25rem;
+      line-height: 1;
+      transition: background .25s ease-in-out;
+      cursor: pointer;
+      font-weight: normal;
+    }
+    .button.button_gray {
+      background: #e6e6eb;
+      color: #555463 !important;
+    }
+  }
+  span.text-segment[lang="en"]:not(:last-child) {
+    margin-right: 0.2em; /* 英文/数字后的间距 */
+  }
+
+  span.text-segment[lang="zh"]:not(:last-child) {
+    margin-right: 0.2em; /* 中文后的间距，视需求调整 */
+  }
+  .note_notes{
+    display: grid;
+    grid-template-columns: repeat(12,minmax(0,1fr));
+    grid-gap: 1rem;
+    gap: .5rem 1rem;
+    padding: 0;
+    margin: 0;
+  }
+
+
+  .note_variant{
+    margin: 0 0.5ch 0 0;
+    .pill.pill_added {
+      background: #94cba0;
+      color: #2e5441;
+    }
+    .pill.pill_improved {
+      background: #f2d96d;
+      color: #534e18;
+    }
+    .pill.pill_fixed {
+      background: #e4bdf1;
+      color: #6a367a;
+    }
+    .pill {
+      display: inline-block;
+      line-height: 1;
+      padding: 0.2rem 0.375rem 0.25rem;
+      border-radius: 0.25rem;
+      text-transform: capitalize;
+      white-space: nowrap;
+      font-size: 15px;
+    }
+    .note_meta, .pill {
+      color: var(--theme-gray-fg);
+    }
+    .text_xs__baUWX {
+      font-size: 1.875rem;
+    }
+  }
+
+  .note_text{
+    font-size: 16px;
+  }
+
+  @media (min-width: 700px) {
+    .note_variant {
+      display: block;
+      text-align: right;
+      grid-column: 1/span 3;
+    }
+    .note_text {
+      grid-column: 4/-1;
+    }
+    .note_notes li {
+      display: contents;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    .note_variant {
+      grid-column: 1/span 2;
+    }
+    .note_text {
+      grid-column: 3/-1;
+    }
+  }
+  ul {
+    list-style-type: none;
+  }
+  .anchor-link {
+    padding-right: 8px;
+    color: #000; /* 或者任何你想要的颜色 */
+    text-decoration: none; /* 移除下划线 */
+    position: absolute;
+    transform: translateX(-100%)  translateY(4px);
+    font-size: 18px;
   }
 }
