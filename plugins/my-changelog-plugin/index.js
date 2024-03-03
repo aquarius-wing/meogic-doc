@@ -28,10 +28,21 @@ module.exports = function (context, options) {
                 const sections = content.split('## ').slice(1); // 以 "## "分割，去掉第一个空元素
                 const changes = sections.map(section => {
                     const [type, ...items] = section.split('\n').filter(Boolean); // 分割并去除空行
-                    return items.map(item => ({
-                        type: type.trim(), // "新增", "优化", "修复"等
-                        content: item.slice(2).trim() // 移除列表项标记
-                    }));
+
+                    return items.map(item => {
+                        let content = item.slice(2).trim(); // 移除列表项标记
+                        let imageUrl = undefined
+                        // 提取image的部分
+                        if (content.includes('![')) {
+                            imageUrl = content.match(/\(([^)]+)\)/)[1]
+                            content = content.replace(/!\[.*?\]\((.*?)\)/g, '')
+                        }
+                        return {
+                            type: type.trim(), // "新增", "优化", "修复"等
+                            content, // 移除列表项标记
+                            imageUrl
+                        }
+                    });
                 }).flat(); // 将数组扁平化
 
                 // 使用fs.statSync获取文件状态信息

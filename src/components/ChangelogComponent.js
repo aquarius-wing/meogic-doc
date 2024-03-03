@@ -5,6 +5,7 @@ import TextWithSpacing from "@site/src/components/TextWithSpacing";
 import {processTextForSpacing} from "@site/src/utils";
 import {format, parse} from "date-fns";
 import { zhCN, enUS } from 'date-fns/locale';
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
 const ChangelogComponent = () => {
 
@@ -137,11 +138,15 @@ const ChangelogComponent = () => {
                             }}>
                               <span className={`pill ${className}`}>{text}</span>
                             </span>
-                            {currentLang === 'zh' ?
-                                <span className="note_text" dangerouslySetInnerHTML={{ __html: processTextForSpacing(marked.marked(change.content)) }} />
-                                : <span className="note_text" dangerouslySetInnerHTML={{ __html: marked.marked(change.content) }} />
-                            }
-
+                            <span className="note_text">
+                                {currentLang === 'zh' ?
+                                    <span dangerouslySetInnerHTML={{ __html: processTextForSpacing(marked.marked(change.content)) }} />
+                                    : <span dangerouslySetInnerHTML={{ __html: marked.marked(change.content) }} />
+                                }
+                                {change.imageUrl &&
+                                    <img src={change.imageUrl} alt={change.content} />
+                                }
+                            </span>
                         </li>
                     );
                 })}
