@@ -29,7 +29,7 @@ module.exports = function (context, options) {
                 const changes = sections.map(section => {
                     const [type, ...items] = section.split('\n').filter(Boolean); // 分割并去除空行
 
-                    return items.map(item => {
+                    return items.filter(item => item.trim() !== '').map(item => {
                         let content = item.slice(2).trim(); // 移除列表项标记
                         let imageUrl = undefined
                         // 提取image的部分
